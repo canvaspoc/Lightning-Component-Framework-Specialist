@@ -1,6 +1,6 @@
 ({
 	handleTabSelect: function(component,event,helper) {
-	
+		
 		console.info("current tab: " + component.get("v.selectedTabId") );		
 		// get tab id from event
 		console.info( JSON.stringify(event.getSource()) ); 
@@ -17,11 +17,14 @@
 		// set boat Id from BoatTile
 		const boat = event.getParam("boat");
 		console.log( "boat id BoatDetails: " + JSON.stringify(boat) );				
-		component.set("v.Id",boat.id);
-		// reload record using lightning data service
-		component.find("service").reloadRecord();
+		component.set("v.Id",boat.id);				
 		
-	}, 
+		// reload record using lightning data service
+		var serviceRecordData = component.find("service");
+        serviceRecordData.set("v.recordId", boat.Id);
+        serviceRecordData.reloadRecord();
+		
+	},
 
 	onRecordUpdated: function(component,event,helper){
 

@@ -9,8 +9,8 @@
     <aura:handler event="c:BoatSelected" action="{!c.onBoatSelected}"/>
     <!-- LDS -->
     <force:recordData aura:id="service"
-                      recordId="{!v.id}"                      
-                      mode="EDIT"
+                      recordId="{!v.id}"
+                      mode="VIEW"
                       layoutType="FULL"
                       fields= "Id, Name, Description__c, Price__c, Length__c, Contact__r.Name, Contact__r.Email. Contact__r.HomePhone, BoatType__r.Name, Picture__c"                                
                       targetFields="{!v.boat}"
@@ -20,7 +20,7 @@
     <!-- LAYOUT -->
     <aura:if isTrue="{!!empty(v.boat)}">
         <div class="slds-card">
-            <lightning:tabset variant="default" selectedTabId="{!v.selectedTabId}" id="detailTabset">
+            <lightning:tabset variant="default" selectedTabId="{!v.selectedTabId}" aura:id="detailTabset">
                 <lightning:tab onactive="{!c.handleTabSelect}" id="details" tabindex="1"  title="Details" label="Details" >                    
                     <c:BoatDetail boat="{!v.boat}"/>                    
                 </lightning:tab>
