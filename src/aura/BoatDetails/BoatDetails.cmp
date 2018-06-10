@@ -1,4 +1,4 @@
-<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId">
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global">
 
     <!-- ATTS -->
     <aura:attribute name="boat" type="Boat__c" /> 
@@ -10,17 +10,17 @@
     <!-- LDS -->
     <force:recordData aura:id="service"
                       recordId="{!v.id}"
-                      mode="VIEW"
                       layoutType="FULL"
-                      fields= "Id, Name, Description__c, Price__c, Length__c, Contact__r.Name, Contact__r.Email. Contact__r.HomePhone, BoatType__r.Name, Picture__c"                                
+                      mode="EDIT"                      
+                      fields= "Id, Name, Description__c, Price__c, Length__c, Contact__r.Name, Contact__r.Email, Contact__r.HomePhone, BoatType__r.Name, Picture__c"                                
                       targetFields="{!v.boat}"
                       targetError="{!v.recordError}"
                       recordUpdated="{!c.onRecordUpdated}" />
 
     <!-- LAYOUT -->
-    <aura:if isTrue="{!!empty(v.boat)}">
+    <aura:if isTrue="{!not(empty(v.id))}">
         <div class="slds-card">
-            <lightning:tabset variant="default" selectedTabId="{!v.selectedTabId}" aura:id="detailTabset">
+            <lightning:tabset variant="scoped" selectedTabId="{!v.selectedTabId}" aura:id="detailTabset">
                 <lightning:tab onactive="{!c.handleTabSelect}" id="details" tabindex="1"  title="Details" label="Details" >                    
                     <c:BoatDetail boat="{!v.boat}"/>                    
                 </lightning:tab>
@@ -33,5 +33,12 @@
             </lightning:tabset>                            
         </div>  
     </aura:if> 
+    <aura:if isTrue="{!not(empty(v.recordError))}">
+        <div class="recordError">
+            <ui:message title="Error" severity="error" closable="true">
+                {!v.recordError}
+            </ui:message>
+        </div>
+    </aura:if>
     
 </aura:component>

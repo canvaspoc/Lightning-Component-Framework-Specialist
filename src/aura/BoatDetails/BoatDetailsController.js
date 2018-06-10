@@ -18,10 +18,10 @@
 		const boat = event.getParam("boat");
 		console.log( "boat id BoatDetails: " + JSON.stringify(boat) );				
 		component.set("v.Id",boat.id);				
-		
-		// reload record using lightning data service
-		var serviceRecordData = component.find("service");
-        serviceRecordData.set("v.recordId", boat.Id);
+		//component.set("v.boat",boat);
+		// reload record using lightning data service 
+		let serviceRecordData = component.find("service");        
+		serviceRecordData.set("v.recordId",boat.Id);
         serviceRecordData.reloadRecord();
 		
 	},
