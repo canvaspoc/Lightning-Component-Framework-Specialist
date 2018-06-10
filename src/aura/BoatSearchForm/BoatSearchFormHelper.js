@@ -19,15 +19,21 @@
 
 	createBoatRecord: function (component,selectedOption) {
 
-		// create boat record using lightning data service
-		// e.force:createRecord is not null cause it's controlled by show new button
-		let createRecordEvent = $A.get('e.force:createRecord');        
+		// lunch record creation modal
+		let createRecordEvent = $A.get("e.force:createRecord");   
+		// set object     
 		createRecordEvent.setParams({
-			'entityApiName': 'Boat__c',
-			'defaultFieldValues': {
-				'BoatType__c' : selectedOption				
-			}
-		});
+			"entityApiName": "Boat__c"
+		});		
+		// set predefined attributes to modal
+		if(!$A.util.isEmpty(selectedOption)){
+			createRecordEvent.setParams({			
+				"defaultFieldValues": {
+					"BoatType__c" : selectedOption		
+				}
+			});			
+		}
+		// fire modal
 		createRecordEvent.fire();
 
 	},

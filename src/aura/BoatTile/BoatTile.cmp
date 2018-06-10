@@ -2,10 +2,12 @@
     
     <!-- ATTS -->
     <aura:attribute name="boat" type="Boat__c" /> 
-    <aura:attribute name="selected" type="Boolean" default="false"/>    
+    <aura:attribute name="selected" type="Boolean" default="false"/>
     <!-- EVENT -->
-    <aura:registerEvent name="BoatSelect" type="c:BoatSelect"/>
+    <aura:registerEvent name="BoatSelect" type="c:BoatSelect"/>    
+    <aura:registerEvent name="BoatSelected" type="c:BoatSelected"/>
     
+    <!-- LAYOUT -->
     <lightning:button name="{!v.boat.Id}" class="{!v.selected?'tile':'tile selected'}" onclick="{!c.onBoatClick}">
         <div class="innertile" style="{!'background-image:URL(\''+v.boat.Picture__c+'\')'}">
             <div class="lower-third">
