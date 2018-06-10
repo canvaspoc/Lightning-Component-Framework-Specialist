@@ -1,11 +1,37 @@
 <aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId">
-    
+
     <!-- ATTS -->
     <aura:attribute name="boat" type="Boat__c" /> 
     <aura:attribute name="id" type="Id"/>  
+    <aura:attribute name="selectedTabId" type="String" default="details" />
+    <aura:attribute name="recordError" type="String"/>
+    <!-- EVENTS & HANDLERS -->
+    <aura:handler event="c:BoatSelected" action="{!c.onBoatSelected}"/>
+    <!-- LDS -->
+    <force:recordData aura:id="service"
+                      recordId="{!v.id}"                      
+                      mode="EDIT"
+                      layoutType="FULL"
+                      fields= "Id, Name, Description__c, Price__c, Length__c, Contact__r.Name, Contact__r.Email. Contact__r.HomePhone, BoatType__r.Name, Picture__c"                                
+                      targetFields="{!v.boat}"
+                      targetError="{!v.recordError}"
+                      recordUpdated="{!c.onRecordUpdated}" />
 
+    <!-- LAYOUT -->
     <aura:if isTrue="{!!empty(v.boat)}">
-        <c:BoatDetail />
-    </aura:if>
+        <div class="slds-card">
+            <lightning:tabset variant="default" selectedTabId="{!v.selectedTabId}" id="detailTabset">
+                <lightning:tab onactive="{!c.handleTabSelect}" id="details" tabindex="1"  title="Details" label="Details" >                    
+                    <c:BoatDetail boat="{!v.boat}"/>                    
+                </lightning:tab>
+                <lightning:tab onactive="{!c.handleTabSelect}" id="reviews" tabindex="2" title="Reviews" label="Reviews" >
+                    Reviews
+                </lightning:tab>
+                <lightning:tab onactive="{!c.handleTabSelect}" id="addReview" tabindex="3" title="Add Review" label="Add Review" >
+                    Add Review
+                </lightning:tab>
+            </lightning:tabset>                            
+        </div>  
+    </aura:if> 
     
 </aura:component>
