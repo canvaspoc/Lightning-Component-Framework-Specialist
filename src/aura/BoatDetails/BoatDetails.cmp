@@ -28,7 +28,7 @@
                     Reviews
                 </lightning:tab>
                 <lightning:tab onactive="{!c.handleTabSelect}" id="addReview" tabindex="3" title="Add Review" label="Add Review" >
-                    Add Review
+                    <c:AddBoatReview boat="{!v.boat}"/> 
                 </lightning:tab>
             </lightning:tabset>                            
         </div>  

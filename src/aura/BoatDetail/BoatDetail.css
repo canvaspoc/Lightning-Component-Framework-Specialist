@@ -1,11 +1,11 @@
-.THIS.label {
+.THIS .label {
     font-weight: bold;
     display: block;
 }
-.THIS.boatproperty {
+.THIS .boatproperty {
     margin-bottom: 3px;
 }
-.THIS.imageview {
+.THIS .imageview {
     background-repeat: no-repeat;
     background-size: contain;
     height: 200px;
