@@ -12,7 +12,7 @@
     <force:recordData aura:id="service"                      
                       layoutType="FULL"
                       mode="EDIT"                                   
-                      fields="Id, Name, Comment__c, Boat__c"          
+                      fields="Id, Name, Comment__c, Boat__c, Rating__c"          
                       targetRecord="{!v.review}"                     
                       targetFields="{!v.boatReview}"
                       targetError="{!v.recordError}"
@@ -31,10 +31,10 @@
             <lightning:inputRichText aura:id="comment" value="{!v.boatReview.Comment__c}" disabledCategories="FORMAT_FONT"/>
         </lightning:layoutItem>
                    
-        <!-- <lightning:layoutItem size="12" padding="around-small">                     
+        <lightning:layoutItem size="12" padding="around-small">                     
             <label class="slds-form-element__label" for="input-id-01">Description</label>                   
-            <c:FiveStarRating value="{!v.review.Rating__c}" readonly="false"/>                
-        </lightning:layoutItem> -->
+            <c:FiveStarRating value="{!v.boatReview.Rating__c}" readonly="false" aura:id="FiveStarRating"/>                
+        </lightning:layoutItem>
                            
         <lightning:layoutItem size="12" class="slds-align--absolute-center">                                
             <lightning:button iconName="utility:save" onclick="{!c.onSave}" label="Submit"/>            
