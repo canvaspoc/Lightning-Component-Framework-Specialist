@@ -16,9 +16,10 @@
 			var status = result.getState();
             if(status === "SUCCESS"){
              	if(!$A.util.isEmpty(result.getReturnValue())){
-					let boats = result.getReturnValue();
-            		console.log(boats);
+					let boats = result.getReturnValue();            		
 					component.set("v.boats",boats);
+				}else{
+					component.set("v.boats",null);
 				}
 			}
 			
