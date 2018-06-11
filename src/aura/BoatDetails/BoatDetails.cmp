@@ -7,6 +7,8 @@
     <aura:attribute name="recordError" type="String"/>
     <!-- EVENTS & HANDLERS -->
     <aura:handler event="c:BoatSelected" action="{!c.onBoatSelected}"/>
+    <aura:handler name="BoatReviewAdded" event="c:BoatReviewAdded" action="{!c.onBoatReviewAdded}"/>
+
     <!-- LDS -->
     <force:recordData aura:id="service"
                       recordId="{!v.id}"
@@ -22,15 +24,15 @@
         <div class="slds-card">
             <lightning:tabset variant="scoped" selectedTabId="{!v.selectedTabId}" aura:id="detailTabset">
                 <lightning:tab onactive="{!c.handleTabSelect}" id="details" tabindex="1"  title="Details" label="Details" >                    
-                    <c:BoatDetail boat="{!v.boat}"/>                    
+                    <c:BoatDetail boat="{!v.boat}" aura:id="boatDetail"/>                    
                 </lightning:tab>
-                <lightning:tab onactive="{!c.handleTabSelect}" id="reviews" tabindex="2" title="Reviews" label="Reviews" >
+                <lightning:tab onactive="{!c.handleTabSelect}" id="boatreviewtab" tabindex="2" title="Reviews" label="Reviews" >
                     Reviews
                 </lightning:tab>
                 <lightning:tab onactive="{!c.handleTabSelect}" id="addReview" tabindex="3" title="Add Review" label="Add Review" >
-                    <c:AddBoatReview boat="{!v.boat}"/> 
+                    <c:AddBoatReview boat="{!v.boat}" aura:id="addBoatReview" id="{!v.Id}" /> 
                 </lightning:tab>
-            </lightning:tabset>                            
+            </lightning:tabset>          
         </div>  
     </aura:if> 
     <aura:if isTrue="{!not(empty(v.recordError))}">

@@ -86,6 +86,11 @@
         <unique>false</unique>
     </fields>
     <label>BoatReview</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <label>Title</label>
         <type>Text</type>
