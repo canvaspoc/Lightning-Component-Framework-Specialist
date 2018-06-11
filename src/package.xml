@@ -33,6 +33,7 @@
         <members>FriendswithBoats</members>
         <members>Map</members>
         <members>PicklistSelect</members>
+        <members>PlotMapMarker</members>
         <name>AuraDefinitionBundle</name>
     </types>
     <types>

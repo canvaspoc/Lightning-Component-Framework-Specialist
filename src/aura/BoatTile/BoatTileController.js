@@ -20,6 +20,24 @@
         });
         BoatSelected.fire();
         console.info("fire event with boat: " + JSON.stringify(myBoat) + " from BoatTile");
-
+        
+        //send geolocation using event       
+        const sObjectId = myBoat.Id;
+        const lat       = myBoat.Geolocation__Latitude__s;
+        const long      = myBoat.Geolocation__Longitude__s;
+        const label     = myBoat.Name; 
+        console.info("firing map event with sObjectId:" + sObjectId + ",label:" + label + ",lat|long:" + lat + "|" + long);       
+        // get application event
+        let PlotMapMarker = $A.get("e.c:PlotMapMarker");
+        // set params to event
+        PlotMapMarker.setParams({     
+                        "lat"   : lat,    
+                        "long"  : long,     
+                        "label" : label,              
+                        "SObjectId" : sObjectId});
+        // fire
+        PlotMapMarker.fire();                
+        
     }
+
 })

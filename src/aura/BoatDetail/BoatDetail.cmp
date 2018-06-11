@@ -52,5 +52,5 @@
             </lightning:layout>
         </p>
     </lightning:card>
-        
+    
 </aura:component>
