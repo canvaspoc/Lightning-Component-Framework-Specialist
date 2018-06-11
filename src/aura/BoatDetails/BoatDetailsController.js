@@ -29,12 +29,15 @@
 		console.log( "review added tab switch - event caught on boatDetails!");	
 		component.find("detailTabset").set("v.selectedTabId", "boatreviewtab" );
 
+		let boat = component.get("v.boat");
+        console.log("recordUpdate in BoatDetails with boat id: " + boat.Id);
+        let boatReviews = component.find("boatReviews");        
+        console.log("auraMethodResult: " + boatReviews.refresh());
+
 	},
 
 	onRecordUpdated: function(component,event,helper){
-
-		console.log( "recordUpdate in BoatDetails");
-
+				      
 	}
 
 })

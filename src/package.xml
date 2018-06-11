@@ -21,6 +21,7 @@
         <members>BoatDetail</members>
         <members>BoatDetails</members>
         <members>BoatReviewAdded</members>
+        <members>BoatReviews</members>
         <members>BoatSearch</members>
         <members>BoatSearchForm</members>
         <members>BoatSearchResults</members>

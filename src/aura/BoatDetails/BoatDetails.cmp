@@ -27,7 +27,7 @@
                     <c:BoatDetail boat="{!v.boat}" aura:id="boatDetail"/>                    
                 </lightning:tab>
                 <lightning:tab onactive="{!c.handleTabSelect}" id="boatreviewtab" tabindex="2" title="Reviews" label="Reviews" >
-                    Reviews
+                    <c:BoatReviews boat="{!v.boat}" aura:id="boatReviews"/>
                 </lightning:tab>
                 <lightning:tab onactive="{!c.handleTabSelect}" id="addReview" tabindex="3" title="Add Review" label="Add Review" >
                     <c:AddBoatReview boat="{!v.boat}" aura:id="addBoatReview" id="{!v.Id}" /> 
