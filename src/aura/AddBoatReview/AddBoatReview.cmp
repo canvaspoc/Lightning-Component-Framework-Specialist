@@ -2,8 +2,8 @@
     <!-- ATTS -->
     <aura:attribute name="boat" type="Boat__c" />
     <aura:attribute name="id" type="Id" /> 
+    <aura:attribute name="review" type="BoatReview__c" access="private"/>
     <aura:attribute name="boatReview" type="BoatReview__c" access="private"/>
-    <aura:attribute name="simpleNewBoatReview" type="BoatReview__c" access="private"/>
     <aura:attribute name="recordError" type="String" access="private"/>
     <!-- HANDLERS -->
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
@@ -13,27 +13,27 @@
                       layoutType="FULL"
                       mode="EDIT"                                   
                       fields="Id, Name, Comment__c, Boat__c"          
-                      targetRecord="{!v.boatReview}"                     
-                      targetFields="{!v.simpleNewBoatReview}"
+                      targetRecord="{!v.review}"                     
+                      targetFields="{!v.boatReview}"
                       targetError="{!v.recordError}"
                       recordUpdated="{!c.onRecordUpdated}"/>
-                      
-        
+    
+                                           
     <!-- LAYOUT -->                    
     <lightning:layout multipleRows="true">
 
         <lightning:layoutItem size="12" padding="around-small">                       
-            <lightning:input aura:id="nameField" name="Title" label="Title" value="{!v.simpleNewBoatReview.Name}"/>                  
+            <lightning:input aura:id="title" name="Title" label="Title" value="{!v.boatReview.Name}"/>                  
         </lightning:layoutItem>
                    
         <lightning:layoutItem size="12" padding="around-small">                           
             <label class="slds-form-element__label" for="commentField">Description</label>           
-            <lightning:inputRichText aura:id="commentField" value="{!v.simpleNewBoatReview.Comment__c}" disabledCategories="FORMAT_FONT"/>
+            <lightning:inputRichText aura:id="comment" value="{!v.boatReview.Comment__c}" disabledCategories="FORMAT_FONT"/>
         </lightning:layoutItem>
                    
         <!-- <lightning:layoutItem size="12" padding="around-small">                     
             <label class="slds-form-element__label" for="input-id-01">Description</label>                   
-            <c:FiveStarRating value="{!v.boatReview.Rating__c}" readonly="false"/>                
+            <c:FiveStarRating value="{!v.review.Rating__c}" readonly="false"/>                
         </lightning:layoutItem> -->
                            
         <lightning:layoutItem size="12" class="slds-align--absolute-center">                                

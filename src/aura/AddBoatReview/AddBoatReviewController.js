@@ -10,7 +10,7 @@
 		// create boatreview__c record using lsd
 		// set boat review record - to avoid bugs		
 		let currentBoat = component.get("v.boat");
-		component.set("v.simpleNewBoatReview.Boat__c",currentBoat.Id);	
+		component.set("v.boatReview.Boat__c",currentBoat.Id);	
 		component.find("service").saveRecord(function(saveResult) {
 			if (saveResult.state === "SUCCESS" || saveResult.state === "DRAFT") {
 
